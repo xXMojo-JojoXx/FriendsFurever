@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <script type="text/javascript">
+
+  function checkForm()
+ {
+	 var wrong=false;
+	 var illegalchars=/[^a-zA-Zא-ת]/;
+   var illegalnum=/[^0-9\-]/;
+	 var mailfilter= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+
+	 /****************************/
+	 /*     CHECK FIRST NAME     */
+     /****************************/
+     var fname=document.forms["contact_form"]["f_name"].value;
+	 if (fname=="")
+      {
+	   show_wrong("First name must be filled","f_name");wrong=true;
+      }
+	 
+	 else if (fname.length<2 && fname!="")
+      {
+	   show_wrong("First name is to short","f_name");wrong=true;
+      }
+	 
+     else if (illegalchars.test(fname))
+      {
+       show_wrong("First name is wrong","f_name");wrong=true;
+      }
+
+     else show_correct("f_name");
+
+
+
+     /****************************/
+	 /*     CHECK LAST NAME      */
+     /****************************/
+     var lname=document.forms["contact_form"]["l_name"].value;
+	 if (lname=="")
+      {
+	   show_wrong("last name must be filled","l_name");wrong=true;
+      }
+
+	 else if (lname.length<2)
+      {
+	   show_wrong("last name is to short","l_name");wrong=true;
+      }
+	 
+     else if (illegalchars.test(lname))
+      {
+       show_wrong("last name is wrong","l_name");wrong=true;
+      }
+
+     else show_correct("l_name");
+
+
+
+     /****************************/
+	 /*    CHECK PHONE NUMBER    */
+     /****************************/
+	 var phone=document.forms["contact_form"]["phone"].value;
+	 if (phone=="")
+      {
+	   show_wrong("must be filled","phone");wrong=true;
+      }
+
+     else if (illegalnum.test(phone))
+      {
+	   show_wrong("illegal digits","phone");wrong=true;
+      }
+
+     else if ((phone.length<9 || phone.length>11))
+      {
+	   show_wrong("wrong number of digits","phone");wrong=true;
+      }
+
+     else show_correct("phone");
+
+
+     /****************************/
+	 /*    CHECK EMAIL ADDRESS   */
+     /****************************/
+    var mail=document.forms["contact_form"]["email"].value;
+
+    if (mail=="")
+    {
+	 show_wrong("must be filled","email");wrong=true;
+    }
+
+
+    else if (!mailfilter.test(mail) && mail!="")
+    {
+	 show_wrong("wrong e-mail address","email");wrong=true;
+    }
+
+    else show_correct("email");
+
+
+
+     /*********************************/
+	 /*    CHECK IF ANY WRONG FIELD   */
+     /*********************************/
+	 
+	 if (!wrong)
+	  {
+	   return true;
+	  }
+	 else
+	  {
+	   return false
+	  }
+
+ 
+ }
+
+
+  function show_send()
+ {
+	 var agree=document.forms["contact_form"]["agree_check"].checked;
+	 if (agree)
+      {
+       document.getElementById("send_btn").style.display="block";
+       document.getElementById("send_pic").style.display="none";
+      }
+	 else
+      {
+       document.getElementById("send_btn").style.display="none";
+       document.getElementById("send_pic").style.display="block";
+      }
+
+ }
+
+
+function show_wrong(comment,field)
+{
+ document.forms["contact_form"][field].style.border="2px solid #ff0000";
+ document.forms["contact_form"][field].style.backgroundColor="#ffffff";
+ document.forms["contact_form"][field].style.color="#ff0000";
+ document.forms["contact_form"][field].value=comment;
+}
+
+function show_correct(field)
+{
+ document.forms["contact_form"][field].style.border="none";
+ document.forms["contact_form"][field].style.backgroundColor="#e0e0e0";
+ document.forms["contact_form"][field].style.color="#000000";
+}
+
+function change_color()
+{
+ document.forms["contact_form"]["f_name"].value="";
+ document.forms["contact_form"]["f_name"].style.color="#000000";
+}
+
+function focusig(element)
+{
+ //document.forms["contact_form"][element].style.color='black';
+ document.forms["contact_form"][element].style.backgroundColor='#FFFFCC';
+ document.forms["contact_form"][element].style.border='none';
+ document.forms["contact_form"][element].value='';
+
+}
+
+  </script>
+  <style type="text/css">
+
+*{margin:0;padding:0;}
+form{
+width:400px;
+background-color:goldenrod;
+margin:40px auto;
+padding:20px;
+}
+
+h1,h3{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size:25px;
+color:#ffffff;
+}
+
+h3{font-size:18px;font-weight:normal;margin-top:30px;}
+
+.text_input{
+height:30px;
+width:390px;
+line-height:30px;
+padding-left:10px;
+border:none;
+background-color:#e0e0e0;
+}
+
+textarea{
+height:100px;
+width:400px;
+border:none;
+background-color:#e0e0e0;
+}
+
+.send_btn{
+height:30px;
+width:80px;
+line-height:30px;
+border:none;
+background-color:#000000;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size:18px;
+color:#ffffff;
+float:right;
+margin-top:10px;
+display:none;
+}
+
+.send_pic{
+height:30px;
+width:80px;
+line-height:30px;
+border:none;
+background-color:#BFBFBF;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size:18px;
+color:#ffffff;
+float:right;
+margin-top:10px;
+text-align:center;
+/*opacity:0.5;
+filter:alpha(opacity=50);*/
+}
+
+      
+    #page{
+      width: 1500px;
+      height: 1500px;
+    }
+    
+    #one{
+     width: 1500px;
+     height:315px;
+     background-color: #333;
+     background-image: url(pics/dogBack-.png) ;
+     background-repeat:no-repeat;
+     background-position: right;
+    }
+
+    #two{
+    
+      width: 1500px;
+      height: 750px;
+    }
+
+
+  </style>
+  <link type="text/CSS" href="External.css" rel="Stylesheet"/>
+</head>
+<body class="body">
+  <div class="topnav">
+      <img class="logo" src="pics/logo2.png" width="60px" height="50px">
+      <a class="active" href="Home.html"><img src="pics/s7.png" width="25px" height="17px">Home</a>
+      <a href="About Us.html" target="_parent"> <img src="pics/s10.png" width="25px" height="17px">About Us</a>
+      <a href="Adopt Me.html" target="_parent"><img src="pics/s2.png" width="25px" height="17px">Adopt Me</a>
+      <a href="Donations.html" target="_parent"><img src="pics/s4.png" width="25px" height="17px">Donations</a>
+      <a href="Contact Us.html" target="_parent" style="background-color: goldenrod;"><img src="pics/s13.png" width="25px" height="17px">Contact Us</a>
+
+    </div>
+
+    <div id="page">
+      <div id="one"> <br> <br><img src="pics/logo4.png" width="700px" >  </div>
+     <div Id="ContainU">   
+       <div id="two">
+
+        <form  method="post" action="Thank_You_For_Contact.html" name="contact_form" onsubmit="return checkForm()" >
+        <h1>Contact Us</h1>
+        
+        <h3>First Name:</h3>
+        <input type="text" name="f_name" maxlength="15" class="text_input" onfocus="focusig('f_name')" onblur="this.style.backgroundColor='#e0e0e0';"/>
+        
+        <h3>Last Name:</h3>
+        <input type="text" name="l_name" maxlength="15" class="text_input" onclick="this.style.color='black';this.value=''" onfocus="focusig('l_name')" onblur="this.style.backgroundColor='#e0e0e0';"/>
+
+         <h3>Looking To Adopt:</h3>
+          <select class="text_input" name= "Dogs to Adopt">
+            <option value="Any">Any dog</option>
+            <option value="Max">Max</option>
+            <option value="Oshi">Oshi</option>
+            <option value="Bonito">Bonito</option>
+            <option value="Shimrt">Shimrt</option>
+            <option value="Paprika">Paprika</option>
+            <option value="Bob">Bob</option>
+            <option value="Shlomi">Shlomi</option>
+            <option value="Oksana">Oksana</option>
+            <option value="Mario">Mario</option>
+            <option value="Lapid">Lapid</option>
+            <option value="Nougat">Nougat</option>
+            <option value="Campari">Campari</option>
+        </select>  
+        
+        <h3>Phone Number:</h3>
+        <input type="text" name="phone" maxlength="15" class="text_input" onclick="this.style.color='black';this.value=''"onfocus="focusig('phone')" onblur="this.style.backgroundColor='#e0e0e0';"/>
+        
+        <h3>E-mail:</h3>
+        <input type="text" name="email" maxlength="25" class="text_input" onclick="this.style.color='black';this.value=''"onfocus="focusig('email')" onblur="this.style.backgroundColor='#e0e0e0';"/>
+        
+        <h3>Message:</h3>
+        <textarea name="Message"></textarea>
+        
+        <h3>Agree<input type="checkbox" id="checkbox" onchange="displayText()" name="agree_check" onclick="show_send()"/></h3>
+        <label for="checkbox"></label>
+        <p id="text"></p>
+
+        <script>
+          function displayText() {
+            var checkbox = document.getElementById("checkbox");
+            var text = document.getElementById("text");
+            if (checkbox.checked === true) {
+              text.innerHTML = "You have agreed to the terms and conditions.";
+            } else {
+              text.innerHTML = "";
+            }
+          }
+        </script>
+        
+        
+        <div style="clear:both;"></div>
+        <input type="submit" name="submit" value="send" class="send_btn" id="send_btn"/>
+        <div class="send_pic" id="send_pic">send</div>
+        <div style="clear:both;"></div></div>
+      </div>
+
+    </div>
+
+</body>
+</html>

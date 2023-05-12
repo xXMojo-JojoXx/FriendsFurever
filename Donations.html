@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/CSS" href="External.css" rel="Stylesheet"/>
+  <title>Donations</title>
+  
+  <script>
+	function checkForm(){
+	  var msg="";
+	  var illegalchars=/[^a-zA-Zא-ת\' ']/;
+	  var illegalnums=/[^0-9\-]/;
+	  var mailfilter=/^([a-zA-Z0-9\.\-\_])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	  
+	  
+
+
+	  //***********************//
+	  // First name validation //
+	  //***********************//
+	  var fName=document.forms["donation_form"]["fname"].value;
+	  if(fName=="")
+	  {
+		  alert("First Name must be entered!");
+		  return false;
+	  }
+	  if (fName.length<2)
+	  {
+		  alert("First Name too short!");
+		  return false;
+	  }
+	  if (illegalchars.test(fName))
+	  {
+		  alert("First Name is illegal!");
+		  return false;
+	  }
+	   //***********************//
+      // Last name validation //
+      //***********************//
+        var lName=document.forms["donation_form"]["lname"].value;
+           if(lName=="")
+            {
+              alert("Last Name must be entered!");
+             return false;
+            }
+             if (lName.length<2)
+            {
+              alert("Last Name too short!");
+                return false;
+            }
+             if (illegalchars.test(lName))
+            {
+              alert("Last Name is illegal!");
+              return false;
+            }
+	  //***********************//
+      // Phone      validation //
+      //***********************//
+         var phone=document.forms["donation_form"]["phone"].value;
+            if(phone=="")
+           {
+             alert("Phone must be entered!");
+              return false;
+           }
+             if (illegalnums.test(phone))
+           {
+                alert("Phone number is illegal!");
+                return false;
+           }
+      //***********************//
+      // E-mail     validation //
+      //***********************//
+         var email=document.forms["donation_form"]["email"].value;
+             if(email=="")
+            {
+              alert("E-mail must be entered!");
+               return false;
+            }
+             if (!mailfilter.test(email))
+            {
+              alert("E-mail address is illegal!");
+              return false;
+            } 
+			//**credit card validation
+			 var cardname = document.forms["donation_form"]["cardname"].value;
+ 			 var cardnumber = document.forms["donation_form"]["cardnumber"].value;
+
+  			if (cardname == "") {
+   			 alert("Name on card is required");
+   			 return false;
+  				}
+
+  			if (cardnumber == "") {
+    		 alert("Credit card number is required");
+   			  return false;
+  				}
+
+  			// Regular expression to check if the card number is in the format of "1111-2222-3333-4444"
+  			var cardnumberFormat = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+  			if (!cardnumberFormat.test(cardnumber)) {
+    		alert("Invalid credit card number format. Please enter a valid credit card number in the format of '1111-2222-3333-4444'");
+ 			   		return false;
+ 				 }
+
+  			// Regular expression to check if the card number is 16 digits long
+  			var cardnumberLength = /^\d{16}$/;
+  			if (!cardnumberLength.test(cardnumber.replace(/-/g,''))) {
+    		alert("Invalid credit card number length. Please enter a valid credit card number that is 16 digits long");
+    			return false;
+  					}					
+
+
+            return true; //function return ok 
+            }//checkForm() 
+
+	  //check box
+			function myFunction() {
+  				// Get the checkbox
+ 			 var checkBox = document.getElementById("myCheck");
+  				// Get the output text
+ 			 var text = document.getElementById("text");
+
+ 			 // If the checkbox is checked, display the output text
+  			if (checkBox.checked == true){
+  		    text.style.display = "block";
+ 		 } else {
+  		    text.style.display = "none";
+ 		 }
+		}
+	 
+	
+		</script>
+
+    <style type="text/css">
+      
+      #page{
+        width: 1500px;
+        height: 1500px;
+      }
+      
+      #one{
+       width: 1500px;
+       height:315px;
+       background-color: #333;
+       background-image: url(pics/dogBack-.png) ;
+       background-repeat:no-repeat;
+       background-position: right;
+      }
+
+	  #ContainD{
+
+  	   background-color: #f2f2f2;
+       padding: 5px 20px 15px 20px;
+  	   border: 1px solid lightgrey;
+  	   border-radius: 3px;
+            }
+	  
+
+      #two{
+      
+        width: 1500px;
+        height: 100%;
+		-ms-flex: 50%; 
+ 	    flex: 50%;
+      }
+
+	  /* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea {
+  width: 100%; 
+  padding: 12px;  
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  margin-top: 6px; 
+  margin-bottom: 16px; 
+  resize: vertical 
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.col-50 {
+  -ms-flex: 50%; 
+  flex: 50%;
+}
+
+
+
+    </style>
+  
+</head>
+  <body class="body">
+    <div class="topnav">
+      <img class="logo" src="pics/logo2.png" width="60px" height="50px">
+        <a class="active" href="Home.html"><img src="pics/s7.png" width="25px" height="17px">Home</a>
+        <a href="About Us.html" target="_parent"> <img src="pics/s10.png" width="25px" height="17px">About Us</a>
+        <a href="Adopt Me.html" target="_parent"><img src="pics/s2.png" width="25px" height="17px">Adopt Me</a>
+        <a href="Donations.html" target="_parent" style="background-color: goldenrod;" ><img src="pics/s4.png" width="25px" height="17px">Donations</a>
+      <a href="Contact Us.html" target="_parent"><img src="pics/s13.png" width="25px" height="17px">Contact Us</a>
+    </div>
+
+    <div id="page">
+        <div id="one"> <br> <br><img src="pics/logo4.png" width="700px" >  </div>
+        <div Id="ContainD">
+          <div id="two" style="width: 700px;">
+
+			<h2 style="text-decoration: underline; color: goldenrod;">Donations</h2>
+			<p>The Friend Furever association is a non-profit association and does not receive funding from any public body.
+				The association is appointed by its members and payments are made for adoption baskets and donations.
+				Very high operating cost and all the funds for treating the dogs and their well-being, including medical treatments, spaying/neutering, vaccinations, food, cleaning materials, etc.
+				Every donation is welcomed and is used for the rescue of the dogs and their well-being only.</p>
+				<br>
+
+			 <form method="post" action="Thank_You_For_Donation.html" name="donation_form" onsubmit="return checkForm()">
+
+				<label for="fname"><b>First Name</b></label>
+				<input type="text" id="fname" name="firstname" placeholder="Your name..">
+		
+				<label for="lname"><b>Last Name</b></label>
+				<input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+				<label for="phone"><b>Phone Number</b></label>
+				<input type="text" id="phone" name="phone" placeholder="Your phone number..">
+
+				<label for="email"><b>E-mail</b></label>
+				<input type="text" id="email" name="email" placeholder="Your e-mail address..">
+			
+				<label for="Amount"><b>Amount:</b></label>
+				<br> <br>
+				
+					<input type="radio" name="price" value="20" id="20" onchange="alertSelected()">
+					<label for="20">20$</label>
+					
+					<input type="radio" name="price" value="50" id="50" onchange="alertSelected()">
+					<label for="50">50$</label>
+					
+					<input type="radio" name="price" value="100" id="100" onchange="alertSelected()">
+					<label for="100">100$</label>
+				 
+				  <div id="alert-box" style="display:none"></div>
+				  
+				  <script>
+					function alertSelected() {
+					  var price = document.querySelector('input[name="price"]:checked').value;
+					  var alertBox = document.getElementById("alert-box");
+					  if (price == "20") {
+						alertBox.innerHTML = "Great Choice! You have selected: " + price + "$";
+					  } else if (price == "50") {
+						alertBox.innerHTML = "Awesome! You have selected: " + price + "$";
+					  } else if (price == "100") {
+						alertBox.innerHTML = "Wow! You have selected: " + price + "$";
+					  }
+					  alertBox.style.display = "block";
+					  alertBox.style.padding = "10px";
+					  alertBox.style.backgroundColor = "goldenrod";
+					  alertBox.style.borderRadius = "5px";
+					  alertBox.style.margin = "10px";
+					  alertBox.style.fontSize = "20px";
+					  alertBox.style.textAlign = "center";
+					}
+				  </script>
+				
+
+			 	<br><br>
+				
+				 Other Amount<input type="checkbox" id="myCheck" onclick="myFunction()">
+				 
+				 <br>
+
+				 <p id="text" style="display:none"><input type="number" id="other_amount" name="o_amount" placeholder="Enter your amount"></p>
+
+				 <br>
+            	
+				<label for="Cards"><b>Accepted Cards:</b></label>
+
+             <div>
+				<input type="radio" id="visa" name="card" value="visa" checked><img src="pics/visa.png" height="25px">
+				<label for="visa" class="visa"></label>
+			  </div>
+			  <div>
+				<input type="radio" id="mastercard" name="card" value="mastercard"><img src="pics/mastercard.png" height="25px">
+				<label for="mastercard" class="mastercard"></label>
+			  </div>
+			  <div>
+				<input type="radio" id="amex" name="card" value="amex"><img src="pics/amex.png" height="25px">
+				<label for="amex" class="amex"></label>
+				<br><br>
+			  </div>
+           		 <label for="cname"><b>Name on Card</b></label>
+           		 <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+           		 <label for="ccnum"><b>Credit card number</b></label>
+                 <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            	 <label for="expmonth"><b>Exp Month</b></label>
+            	 <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+                 <div class="row">
+                 
+                   <label for="expyear"><b>Exp Year</b></label>
+                   <input type="text" id="expyear" name="expyear" placeholder="2018">
+                  </div>
+                  <div class="col-50">
+                    <label for="cvv"><b>CVV</b></label>
+                    <input type="text" id="cvv" name="cvv" placeholder="352" maxlength="3">
+				 </div>
+		
+			  <input id="Donate" type="submit" value="Donate">
+		
+		  </form>
+		</div>
+        </div>   
+    </div>
+
+
+  </body>
+</html>
